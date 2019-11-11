@@ -1,0 +1,33 @@
+.container {
+    display: grid;
+    height: fit-content;
+    width: fit-content;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
+    background-color: lightcoral;
+}
+
+.digit-display {
+    border: thick solid black;
+    background-color: rgb(191, 255, 189);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.keypad {
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+}
+
+.digits {
+    display: grid;
+    grid-template-rows: repeat(5, 40px);
+    grid-template-columns: repeat(3, 40px);
+}
+
+.operators {
+    display: grid;
+    grid-template-rows: repeat(5, 40px);
+    grid-template-columns: 40px;
+}
