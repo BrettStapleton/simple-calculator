@@ -2,35 +2,41 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <title>Simple Calculator</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <header>
+            <h1>A Simple Calculator</h1>
+        </header>
         <div class="container">
-            <div class="digit-display">
-                <h3>0123456789</h3>
-            </div>
-            <div class="keypad">
-                <div class="function-buttons">
-                    <button id="clear-btn">AC</button>
+            <div class="calculator">
+                <div class="display">
+                    <h3 id="display-content"></h3>
                 </div>
-                <div class="digit-buttons">
-                    <button id="digit7-btn">7</button>
-                    <button id="digit8-btn">8</button>
-                    <button id="digit9-btn">9</button>
-                    <button id="digit4-btn">4</button>
-                    <button id="digit5-btn">5</button>
-                    <button id="digit6-btn">6</button>
-                    <button id="digit1-btn">1</button>
-                    <button id="digit2-btn">2</button>
-                    <button id="digit3-btn">3</button>
-                    <button id="digit0-btn">0</button>
-                </div>
-                <div class="operator-buttons">
-                    <button id="divide-btn">/</button>
-                    <button id="mult-btn">x</button>
-                    <button id="sub-btn">-</button>
-                    <button id="add-btn">+</button>
-                    <button id="equals-btn">=</button>
+                <div class="keypad">
+                    <div class="functions">
+                        <button id="clear-btn">AC</button>
+                    </div>
+                    <div class="digits">
+                        <button class="digit-btn">7</button>
+                        <button class="digit-btn">8</button>
+                        <button class="digit-btn">9</button>
+                        <button class="digit-btn">4</button>
+                        <button class="digit-btn">5</button>
+                        <button class="digit-btn">6</button>
+                        <button class="digit-btn">1</button>
+                        <button class="digit-btn">2</button>
+                        <button class="digit-btn">3</button>
+                        <button class="digit-btn">0</button>
+                    </div>
+                    <div class="operators">
+                        <button class="operator-btn" id="divide-btn">&divide;</button>
+                        <button class="operator-btn" id="times-btn">&times;</button>
+                        <button class="operator-btn" id="minus-btn">&minus;</button>
+                        <button class="operator-btn" id="plus-btn">&plus;</button>
+                        <button class="operator-btn" id="equals-btn">&equals;</button>
+                    </div>
                 </div>
             </div>
         </div>
