@@ -2,6 +2,7 @@ let displayValue = "";
 let operator = "";
 let value1 = "";
 let value2 = "";
+
 const displayContent = document.getElementById('display-content');
 displayContent.textContent = 0;
 
@@ -18,47 +19,60 @@ const operate = (operator, a, b) => {
         return subtract(a, b);
     }
     else if (operator === "divide-btn"){
-        return divide(a, b);
+        if (b === 0){
+            clearAll();
+            return displayContent.textContent = "Divide by 0";
+        }
+        else {
+            return divide(a, b);
+        }
     }
     else if (operator === "times-btn"){
         return multiply(a, b);
     }
     else {
-        return;
+        return a;
     }
 }
 
+
+
 const updateDisplay = (e) => {
-    displayValue += e.target.textContent;
-    displayContent.textContent = displayValue;
+    if (displayContent.textContent.includes('.') && e.target.id == "dot-btn"){
+        e.target.disabled = true;
+    }
+    else {
+        displayValue += e.target.textContent;
+        displayContent.textContent = displayValue;
+        document.getElementById("dot-btn").disabled = false;
+    }
+}
+
+const clearAll = () => {
+    value1 = "";
+    value2 = "";
+    operator = "";
+    displayValue = "";
+    displayContent.textContent = 0;
 }
 
 const getDisplayValue = (e) => {
     if (value1 === "" && value2 === ""){
         value1 = Number(displayValue);
         operator = e.target.id;
-        console.log("First if");
-        console.log({value1});
-        console.log({value2});
-        console.log({operator});
         displayValue = "";
     }
     else {
         value2 = Number(displayValue);
-        console.log("else");
-        console.log({value1});
-        console.log({value2});
-        console.log({operator});
         if (e.target.id != "equals-btn"){
             value1 = operate(operator, value1, value2);
             displayValue = value1;
             displayContent.textContent = displayValue;
             displayValue = "";
             operator = e.target.id;
-            console.log("else if");
-            console.log({value1});
-            console.log({value2});
-            console.log({operator});
+            if (typeof value1 != 'number'){
+                value1 = "";
+            }
         }
         else {
             value1 = operate(operator, value1, value2);
@@ -66,10 +80,6 @@ const getDisplayValue = (e) => {
             displayContent.textContent = displayValue;
             value1 = "";
             value2 = "";
-            console.log("else else");
-            console.log({value1});
-            console.log({value2});
-            console.log({operator});
         }
     }
 }
@@ -85,9 +95,4 @@ operatorButtons.forEach((button) => {
 });
 
 const clearButton = document.querySelector('#clear-btn');
-clearButton.addEventListener('click', () => {
-    value1 = "";
-    value2 = "";
-    displayValue = "";
-    displayContent.textContent = 0;
-});
+clearButton.addEventListener('click', clearAll);
